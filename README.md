@@ -1,17 +1,25 @@
 # Click Here To Get Funded: Vanquish upsell page
 
-A static upsell page for the StockHours Whop app. It pushes members to a Vanquish Trader funded options account through the affiliate link https://www.vanquishtrader.co/nour/ and code **NOUR**, which gives a discount on any Vanquish plan.
+A static sales page for the StockHours Whop app. It sends members to a Vanquish Trader funded options account through the affiliate link https://www.vanquishtrader.co/nour/ and code **NOUR**, which gives a discount on any Vanquish plan.
 
-- `index.html`: page markup (hero, stats, how it works, plans, why, FAQ, final CTA, disclosures)
-- `assets/styles.css`: StockHours black and gold styles
-- `assets/app.js`: tap-to-copy buttons for the code (with a fallback for the Whop iframe), the payout wall's "see all" button and full-size viewer, and the sticky phone CTA
-- `assets/payouts/`: web-sized (1280×720) payout cards shown on the page
-- `payouts-original/`: the original uploaded payout screenshots
+## Page sections
+1. Hero: "Click here to get funded", the $300K+ claim, Nour's YouTube video (starts at 0:35), the button and the copy-code box
+2. Payout ticker: every payout card, scrolling
+3. Payout statement: Brian A.'s 13 payouts ($100,247, Oct 30 to Nov 17). Each row opens its card.
+4. Receipts: all 14 payout cards ($108,322)
+5. Own account vs. a 50K Rapid account
+6. Three steps, the plan comparison table, FAQ, closing call to action with a P.S., and disclosures
 
-## Payout proof
-The page claims **$300K+ paid to code NOUR users since the Rapid plans launched** and shows 14 payout cards ($108,322 total). To add a card, export it at 1280×720 into `assets/payouts/` and copy one of the `<li class="payout">` blocks in `index.html`.
+## Files
+- `index.html`: the page
+- `assets/styles.css`: styles (StockHours black and gold, plus Caveat for the hand-written notes)
+- `assets/app.js`: the click-to-load YouTube player, copy-code buttons (with a fallback for the Whop iframe), the payout card viewer and the sticky bar
+- `assets/video-thumb.jpg`: the video thumbnail
+- `assets/payouts/`: payout cards resized to 1280×720 for the page
+- `payouts-original/`: the original uploaded screenshots
 
 ## Deploy
-The page has no build step. Host the folder on any static host (for example Vercel or Netlify), then put the URL in your Whop app's page or iframe setting.
+The page has no build step. Host the folder on any static host (for example Vercel), then put the URL in your Whop app.
 
-Plan prices and rules come from vanquishtrader.com ($10K account list prices, November 2026). Update `index.html` if Vanquish changes them.
+## Adding a payout
+Export the card at 1280×720 into `assets/payouts/`. Then add it to the ticker (`.tick`), the receipts grid (`.receipts`), and, if it's Brian's, the statement (`.statement__rows`). Update the totals ($100,247 and $108,322) wherever they appear.
