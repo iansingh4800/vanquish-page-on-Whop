@@ -50,6 +50,36 @@
     });
   });
 
+  // Payout wall: reveal the rest of the cards.
+  var more = document.querySelector("[data-show-more]");
+  if (more) {
+    more.addEventListener("click", function () {
+      document.querySelectorAll("[data-extra]").forEach(function (el) { el.hidden = false; });
+      more.remove();
+    });
+  }
+
+  // Payout wall: full-size viewer.
+  var dialog = document.querySelector("[data-lightbox-dialog]");
+  var dialogImg = dialog && dialog.querySelector("[data-lightbox-img]");
+  document.querySelectorAll("[data-lightbox]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var src = btn.getAttribute("data-lightbox");
+      var img = btn.querySelector("img");
+      if (!dialog || typeof dialog.showModal !== "function") {
+        window.open(src, "_blank", "noopener");
+        return;
+      }
+      dialogImg.src = src;
+      dialogImg.alt = img ? img.alt : "";
+      dialog.showModal();
+    });
+  });
+  if (dialog) {
+    dialog.querySelector("[data-lightbox-close]").addEventListener("click", function () { dialog.close(); });
+    dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+  }
+
   // Show the sticky bar once the hero's code box has scrolled away.
   var sticky = document.querySelector("[data-sticky]");
   var heroBox = document.querySelector(".price-box");
